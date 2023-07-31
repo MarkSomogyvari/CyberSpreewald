@@ -2,12 +2,12 @@ from shiny import *#App, render, ui
 from main1 import model_channels, plot_stuff
 
 app_ui = ui.page_fluid(
-    ui.layout_sidebar(
-        ui.panel_sidebar(
+    ui.head_content(
+        ui.row(
             ui.input_switch("w1", "Open weir", value = False),
         ),
-        ui.panel_main(
-            ui.output_plot("pie"), width = '50%', height = '100%'
+        ui.row(
+            ui.output_plot("pie"), #width="500px", height="1000px"
         ),
     ),
 )

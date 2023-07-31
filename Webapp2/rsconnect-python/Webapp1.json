@@ -1,0 +1,12 @@
+{
+    "https://api.shinyapps.io": {
+        "server_url": "https://api.shinyapps.io",
+        "filename": "D:\\Research\\CyberSpreewald\\Webapp1",
+        "app_url": "https://marksomogyvari.shinyapps.io/discharge_s2/",
+        "app_id": 9532004,
+        "app_guid": null,
+        "title": "discharge_s2",
+        "app_mode": "python-shiny",
+        "app_store_version": 1
+    }
+}

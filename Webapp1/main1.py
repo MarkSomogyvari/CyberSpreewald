@@ -209,6 +209,7 @@ def model_channels(W):
 def plot_stuff(sf,P_new,V):
     fig = plt.figure()#figsize = [12,6])
     plt.subplot(2,2,1)
+    #plt.gca().set_aspect('equal')
     plt.title('Channel structure')
     for i in range(0,len(sf)):
         plt.plot([sf.Xb[i],sf.Xe[i]],[sf.Yb[i],sf.Ye[i]],lw=sf.Width[i]*2)
@@ -216,10 +217,12 @@ def plot_stuff(sf,P_new,V):
         
         
     plt.subplot(2,2,2)
+    #plt.gca().set_aspect('equal')
     plt.title('P convergence')
     plt.plot(P_new[:,23])
 
     plt.subplot(2,2,3)
+    #plt.gca().set_aspect('equal')
     plt.title('Head distribution')
     time = np.shape(P_new)[0]-1
     P_norm = (P_new[time,:]-min(P_new[time,:]))/(max(P_new[time,:])-min(P_new[time,:]))
@@ -230,6 +233,7 @@ def plot_stuff(sf,P_new,V):
         
         
     plt.subplot(2,2,4)
+    #plt.gca().set_aspect('equal')
     plt.title('Discharge')
     V2 = V*sf.Width*1
     V2_norm = (V2-min(V2))/(max(V2)-min(V2))
