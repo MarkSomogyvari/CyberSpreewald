@@ -208,39 +208,24 @@ def model_channels(W):
 
 def plot_stuff(sf,P_new,V):
     fig = plt.figure()#figsize = [12,6])
-    plt.subplot(2,2,1)
-    #plt.gca().set_aspect('equal')
-    plt.title('Channel structure')
-    for i in range(0,len(sf)):
-        plt.plot([sf.Xb[i],sf.Xe[i]],[sf.Yb[i],sf.Ye[i]],lw=sf.Width[i]*2)
-        #plt.text(sf.Xb[i],sf.Yb[i],str(sf.id[i]))
-        
-        
-    plt.subplot(2,2,2)
-    #plt.gca().set_aspect('equal')
-    plt.title('P convergence')
-    plt.plot(P_new[:,23])
 
-    plt.subplot(2,2,3)
-    #plt.gca().set_aspect('equal')
-    plt.title('Head distribution')
-    time = np.shape(P_new)[0]-1
-    P_norm = (P_new[time,:]-min(P_new[time,:]))/(max(P_new[time,:])-min(P_new[time,:]))
-    cmap = matplotlib.cm.get_cmap('jet')
-
-    for i in range(0,len(sf)):
-        plot = plt.plot([sf.Xb[i],sf.Xe[i]],[sf.Yb[i],sf.Ye[i]],color=cmap(P_norm[i]))
-        
-        
-    plt.subplot(2,2,4)
-    #plt.gca().set_aspect('equal')
     plt.title('Discharge')
     V2 = V*sf.Width*1
     V2_norm = (V2-min(V2))/(max(V2)-min(V2))
+    V2_norm[V2_norm<0.01] = 0
     cmap = matplotlib.cm.get_cmap('jet')
 
     for i in range(0,len(sf)):
-        plt.plot([sf.Xb[i],sf.Xe[i]],[sf.Yb[i],sf.Ye[i]],color=cmap(V2_norm[i]))
+        plt.plot([sf.Yb[i],sf.Ye[i]],[sf.Xb[i],sf.Xe[i]],color=cmap(V2_norm[i]))
+    
+    plt.scatter(sf.Yb,sf.Xb,s=0.001)
+    plt.jet()
+    plt.colorbar()
+
+    plt.text(sf.Yb[63],sf.Xb[63],str(V2_norm[63])[0:5])
+    plt.text(sf.Yb[83],sf.Xb[83],str(V2_norm[83])[0:5])
+    plt.text(sf.Yb[93],sf.Xb[93],str(V2_norm[93])[0:5])
+    
     plt.tight_layout()
     return fig
 
