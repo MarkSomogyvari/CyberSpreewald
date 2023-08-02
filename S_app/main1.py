@@ -25,7 +25,7 @@ def model_channels(W):
         return np.arctan((df.Ye-df.Yb)/(df.Xe-df.Xb))
     
     # Segmentation
-    dx = 0.1
+    dx = 0.3
     L = section_len(df)
     alpha = section_angle(df)
     X_len = df.Xe-df.Xb 
@@ -53,7 +53,7 @@ def model_channels(W):
     sf = pd.DataFrame(DFN_Mat2, columns = ['id','Xb','Yb','Xe','Ye','Width','Name'])
     sf.iloc[:,1:6] = sf.iloc[:,1:6].astype('float')
 
-    sf.Xb[87] =  sf.Xb[87]+0.05*W
+    sf.Xb[25] =  sf.Xb[25]+0.05*W
 
     #Connectivity matrix
     eps = 0.001
@@ -222,9 +222,9 @@ def plot_stuff(sf,P_new,V):
     plt.jet()
     plt.colorbar()
 
-    plt.text(sf.Yb[63],sf.Xb[63],str(V2_norm[63])[0:5])
-    plt.text(sf.Yb[83],sf.Xb[83],str(V2_norm[83])[0:5])
-    plt.text(sf.Yb[93],sf.Xb[93],str(V2_norm[93])[0:5])
+    #plt.text(sf.Yb[63],sf.Xb[63],str(V2_norm[63])[0:5])
+    #plt.text(sf.Yb[83],sf.Xb[83],str(V2_norm[83])[0:5])
+    #plt.text(sf.Yb[93],sf.Xb[93],str(V2_norm[93])[0:5])
     
     plt.tight_layout()
     return fig
