@@ -88,7 +88,7 @@ def model_channels(W):
 
 
     # +++++++++++++++ these need to be adjusted:
-    Dt_P = 10      # Pressure time step for steady state [sec]
+    Dt_P = 100      # Pressure time step for steady state [sec]
     DP_time = 10000
     n_time_P = int(DP_time/Dt_P) # Maximum number of pressure time steps
 
